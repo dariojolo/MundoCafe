@@ -17,22 +17,22 @@ import ar.com.dariojolo.mundocafe.R;
 import ar.com.dariojolo.mundocafe.listeners.ItemClickListener;
 import ar.com.dariojolo.mundocafe.models.CafeteriaEntity;
 
-public class CafeteriaAdapter extends RecyclerView.Adapter<CafeteriaHolder> {
+public class CafeteriaFavAdapter  extends RecyclerView.Adapter<CafeteriaFavHolder> {
     Context context;
     List<CafeteriaEntity> listado; //Lista donde se va a guardar la info para mostrar en el RecyclerView
 
-    public CafeteriaAdapter(Context context, List<CafeteriaEntity> listado) {
+    public CafeteriaFavAdapter(Context context, List<CafeteriaEntity> listado) {
         this.context = context;
         this.listado = listado;
     }
     @NonNull
     @Override
-    public CafeteriaHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    public CafeteriaFavHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.card_cafeteria,parent, false); //Infla el elemento del recyclerview a cargar
-        return new CafeteriaHolder(view);
+        return new CafeteriaFavHolder(view);
     }
     @Override
-    public void onBindViewHolder(@NonNull final CafeteriaHolder holder, int position) {
+    public void onBindViewHolder(@NonNull final CafeteriaFavHolder holder, int position) {
         holder.mName.setText(listado.get(position).getName());
         holder.mAddress.setText(listado.get(position).getAddress());
         Picasso.get()
@@ -45,7 +45,6 @@ public class CafeteriaAdapter extends RecyclerView.Adapter<CafeteriaHolder> {
             @Override
             public void onItemClickListener(View view, int position) {
                 Navigation.findNavController(view).navigate(R.id.to_detail_fragment);
-
             }
         });
     }
@@ -53,6 +52,4 @@ public class CafeteriaAdapter extends RecyclerView.Adapter<CafeteriaHolder> {
     public int getItemCount() {
         return listado.size();
     }
-
-
 }

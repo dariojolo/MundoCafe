@@ -18,13 +18,13 @@
     <fragment
         android:id="@+id/navigation_favorite"
         android:name="ar.com.dariojolo.mundocafe.ui.favorite.FavoriteFragment"
-        android:label="@string/title_dashboard"
+        android:label="@string/title_favorites"
         tools:layout="@layout/fragment_favorite" />
 
     <fragment
         android:id="@+id/navigation_settings"
         android:name="ar.com.dariojolo.mundocafe.ui.notifications.NotificationsFragment"
-        android:label="@string/title_notifications"
+        android:label="@string/title_settings"
         tools:layout="@layout/fragment_notifications" />
     <fragment
         android:id="@+id/detailFragment"

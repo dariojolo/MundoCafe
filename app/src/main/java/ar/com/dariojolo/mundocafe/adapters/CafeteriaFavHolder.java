@@ -11,13 +11,13 @@ import androidx.recyclerview.widget.RecyclerView;
 import ar.com.dariojolo.mundocafe.R;
 import ar.com.dariojolo.mundocafe.listeners.ItemClickListener;
 
-public class CafeteriaHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
+public class CafeteriaFavHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
     ImageView mImageCafeteria;
     TextView mName, mAddress;
     ItemClickListener itemClickListener;
     RatingBar ratingCafeteria;
 
-    CafeteriaHolder(@NonNull View itemView) {
+    CafeteriaFavHolder(@NonNull View itemView) {
         super(itemView);
         this.mName = itemView.findViewById(R.id.name);
         this.mAddress = itemView.findViewById(R.id.address);
@@ -34,4 +34,3 @@ public class CafeteriaHolder extends RecyclerView.ViewHolder implements View.OnC
         this.itemClickListener = item;
     }
 }
-

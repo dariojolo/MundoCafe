@@ -1,6 +1,7 @@
 package ar.com.dariojolo.mundocafe.ui.detail;
 
 
+import android.app.ActionBar;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -27,6 +28,8 @@ public class DetailFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_detail, container, false);
+
+        
     }
 
 }

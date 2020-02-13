@@ -11,10 +11,23 @@ import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+
+import java.util.ArrayList;
+import java.util.List;
 
 import ar.com.dariojolo.mundocafe.R;
+import ar.com.dariojolo.mundocafe.adapters.CafeteriaFavAdapter;
+import ar.com.dariojolo.mundocafe.models.CafeteriaEntity;
+import ar.com.dariojolo.mundocafe.ui.home.HomeViewModel;
 
 public class FavoriteFragment extends Fragment {
+
+    private HomeViewModel homeViewModel;
+    private RecyclerView mRecyclerView;
+    private CafeteriaFavAdapter cafeteriaFavAdapter;
+
 
     private FavoriteViewModel favoriteViewModel;
     private TextView texto;
@@ -23,15 +36,25 @@ public class FavoriteFragment extends Fragment {
         favoriteViewModel =
                 ViewModelProviders.of(this).get(FavoriteViewModel.class);
         View root = inflater.inflate(R.layout.fragment_favorite, container, false);
-       /* final TextView textView = root.findViewById(R.id.text_dashboard);
-        favoriteViewModel.getText().observe(this, new Observer<String>() {
-            @Override
-            public void onChanged(@Nullable String s) {
-                textView.setText(s);
-            }
-        });*/
-       texto = root.findViewById(R.id.text_favorite);
-       texto.setText("TEXTO DE PRUEBA");
+
+        mRecyclerView = root.findViewById(R.id.recyclerViewFav);
+        mRecyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
+
+        cafeteriaFavAdapter = new CafeteriaFavAdapter(getActivity(),this.getMyList());
+        mRecyclerView.setAdapter(cafeteriaFavAdapter);
+
         return root;
+    }
+
+    private List<CafeteriaEntity> getMyList() {
+        List<CafeteriaEntity>listado = new ArrayList<>();
+
+        CafeteriaEntity cafe = new CafeteriaEntity(1L,"Cuervo cafe", "Una direccion 777", "Palermo", R.drawable.cuervo, 3.4f, true);
+        CafeteriaEntity cafe2 = new CafeteriaEntity(2L,"Cuervo cafe 2", "Otra direccion 777", "Palermo", R.drawable.cuervo, 4.6f, true);
+        listado.add(cafe);
+        listado.add(cafe2);
+
+        return listado;
+
     }
 }

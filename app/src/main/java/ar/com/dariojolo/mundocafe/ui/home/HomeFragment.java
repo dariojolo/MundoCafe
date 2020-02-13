@@ -7,13 +7,17 @@ import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
 import androidx.lifecycle.ViewModelProviders;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
+
 import java.util.ArrayList;
 import java.util.List;
 
+import ar.com.dariojolo.mundocafe.NuevaCafeteriaDialogFragment;
 import ar.com.dariojolo.mundocafe.R;
 import ar.com.dariojolo.mundocafe.adapters.CafeteriaAdapter;
 import ar.com.dariojolo.mundocafe.models.CafeteriaEntity;
@@ -23,6 +27,7 @@ public class HomeFragment extends Fragment {
     private HomeViewModel homeViewModel;
     private RecyclerView mRecyclerView;
     private CafeteriaAdapter cafeteriaAdapter;
+    private FloatingActionButton fab;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
@@ -37,6 +42,15 @@ public class HomeFragment extends Fragment {
             }
         });*/
 
+        fab = root.findViewById(R.id.fab);
+
+        fab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                mostrarDialogoNuevaCafeteria();
+            }
+        });
+
         mRecyclerView = root.findViewById(R.id.recyclerView);
         mRecyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
 
@@ -45,6 +59,12 @@ public class HomeFragment extends Fragment {
         mRecyclerView.setAdapter(cafeteriaAdapter);
 
         return root;
+    }
+
+    private void mostrarDialogoNuevaCafeteria() {
+        FragmentManager fm = getActivity().getSupportFragmentManager();
+        NuevaCafeteriaDialogFragment dialogNuevaCafeteria = new NuevaCafeteriaDialogFragment();
+        dialogNuevaCafeteria.show(fm, "NuevaCafeteriaDialogFragment");
     }
 
     private List<CafeteriaEntity> getMyList() {
