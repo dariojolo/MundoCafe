@@ -61,4 +61,11 @@ public class CafeteriaMessageEntity {
     public void setUser(String user) {
         this.user = user;
     }
+    public Date getDate() {
+        return date;
+    }
+
+    public void setDate(Date date) {
+        this.date = date;
+    }
 }
