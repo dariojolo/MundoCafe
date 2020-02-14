@@ -14,7 +14,12 @@ import androidx.lifecycle.ViewModelProviders;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.EditText;
+import android.widget.RatingBar;
+import android.widget.TextView;
 import android.widget.Toast;
+
+import ar.com.dariojolo.mundocafe.models.CafeteriaEntity;
 
 
 /**
@@ -22,6 +27,9 @@ import android.widget.Toast;
  */
 public class NuevaCafeteriaDialogFragment extends DialogFragment {
     private View view;
+
+    private EditText tName, tAddress, tPhoto;
+    private RatingBar rating;
 
     public NuevaCafeteriaDialogFragment() {
         // Required empty public constructor
@@ -47,8 +55,12 @@ public class NuevaCafeteriaDialogFragment extends DialogFragment {
                 .setPositiveButton(R.string.fire, new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int id) {
                         Toast.makeText(getContext(), "AQUI ESTOY!", Toast.LENGTH_SHORT).show();
+                        String name = tName.getText().toString();
+                        String address = tAddress.getText().toString();
+                        String photo = tPhoto.getText().toString();
+                        float rating2 = rating.getRating();
                         NuevaCafeteriaDialogViewModel mViewModel = ViewModelProviders.of(getActivity()).get(NuevaCafeteriaDialogViewModel.class);
-                      //  mViewModel.insertNota(new NotaEntity(titulo,contenido,R.drawable.ic_gear,isFavorita,color));
+                        mViewModel.insertNota(new CafeteriaEntity(name,address,"",photo, rating2, false));
                         dialog.dismiss();
 
                     }
@@ -63,10 +75,10 @@ public class NuevaCafeteriaDialogFragment extends DialogFragment {
         LayoutInflater inflater = getActivity().getLayoutInflater();
         view = inflater.inflate(R.layout.fragment_nueva_cafeteria_dialog, null);
 
-        /*txtTitulo = view.findViewById(R.id.txtTituloAlta);
-        txtContenido = view.findViewById(R.id.txtContenido);
-        swFavorita = view.findViewById(R.id.btnFav);
-        rgColor = view.findViewById(R.id.radioGroupColor);*/
+        tName = view.findViewById(R.id.txtName);
+        tAddress = view.findViewById(R.id.txtAddress);
+        tPhoto = view.findViewById(R.id.txtUrlPic);
+        rating = view.findViewById(R.id.ratingBarAdd);
 
         builder.setView(view);
 

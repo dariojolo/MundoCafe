@@ -11,13 +11,12 @@ public class CafeteriaEntity {
     @PrimaryKey(autoGenerate = true)
     public Long id;
     public String name, address, neighborhood;
-    public int image;
+    public String image;
     public float rating;
 //    public List<CafeteriaMessageEntity>messages;
     public boolean favorita;
 
-    public CafeteriaEntity(Long id, String name, String address, String neighborhood, int image, float rating, boolean favorita) {
-        this.id = id;
+    public CafeteriaEntity(String name, String address, String neighborhood, String image, float rating, boolean favorita) {
         this.name = name;
         this.address = address;
         this.neighborhood = neighborhood;
@@ -58,11 +57,11 @@ public class CafeteriaEntity {
         this.neighborhood = neighborhood;
     }
 
-    public int getImage() {
+    public String getImage() {
         return image;
     }
 
-    public void setImage(int image) {
+    public void setImage(String image) {
         this.image = image;
     }
 

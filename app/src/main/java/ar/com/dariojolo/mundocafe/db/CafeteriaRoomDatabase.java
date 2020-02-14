@@ -10,7 +10,7 @@ import androidx.room.TypeConverters;
 import ar.com.dariojolo.mundocafe.models.CafeteriaEntity;
 import ar.com.dariojolo.mundocafe.models.CafeteriaMessageEntity;
 
-@Database(entities = {CafeteriaEntity.class, CafeteriaMessageEntity.class}, version = 1, exportSchema = false)
+@Database(entities = {CafeteriaEntity.class}, version = 2, exportSchema = false)
 @TypeConverters({Converters.class})
 public abstract class CafeteriaRoomDatabase extends RoomDatabase {
     public abstract CafeteriaRoomDao getCafeteriaDao();

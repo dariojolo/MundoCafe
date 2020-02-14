@@ -49,8 +49,8 @@ public class FavoriteFragment extends Fragment {
     private List<CafeteriaEntity> getMyList() {
         List<CafeteriaEntity>listado = new ArrayList<>();
 
-        CafeteriaEntity cafe = new CafeteriaEntity(1L,"Cuervo cafe", "Una direccion 777", "Palermo", R.drawable.cuervo, 3.4f, true);
-        CafeteriaEntity cafe2 = new CafeteriaEntity(2L,"Cuervo cafe 2", "Otra direccion 777", "Palermo", R.drawable.cuervo, 4.6f, true);
+        CafeteriaEntity cafe = new CafeteriaEntity("Cuervo cafe", "Una direccion 777", "Palermo", "https://www.sctech.edu/wp-content/plugins/ajax-search-pro/img/default.jpg", 3.4f, true);
+        CafeteriaEntity cafe2 = new CafeteriaEntity("Cuervo cafe 2", "Otra direccion 777", "Palermo", "https://www.sctech.edu/wp-content/plugins/ajax-search-pro/img/default.jpg", 4.6f, true);
         listado.add(cafe);
         listado.add(cafe2);
 
